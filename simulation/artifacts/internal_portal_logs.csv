@@ -1,0 +1,4 @@
+| Timestamp           | Username | Resource Accessed     | Action   |
+| ------------------- | -------- | --------------------- | -------- |
+| 2025-08-01 10:05:13 | j.doe    | /intranet/finance.pdf | Download |
+| 2025-08-01 10:06:45 | j.doe    | /users/powershell.sh  | Executed |
