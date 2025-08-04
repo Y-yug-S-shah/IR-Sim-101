@@ -1,0 +1,23 @@
+Initial Access:
+- T1566.001 – Phishing: Spearphishing Attachment
+
+Execution:
+- T1059.001 – Command and Scripting Interpreter: PowerShell
+
+Credential Access:
+- T1555.003 – Credentials from Web Browsers
+
+Persistence:
+- T1547.001 – Boot or Logon Autostart Execution: Registry Run Keys
+
+Defense Evasion:
+- T1140 – Deobfuscate/Decode Files or Information
+
+Command and Control:
+- T1071.001 – Application Layer Protocol: Web Protocols
+
+Collection:
+- T1113 – Screen Capture
+
+Exfiltration:
+- T1041 – Exfiltration Over C2 Channel
