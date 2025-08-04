@@ -1,0 +1,4 @@
+| Timestamp           | Command Executed                          | User  | Source IP   |
+| ------------------- | ----------------------------------------- | ----- | ----------- |
+| 2025-08-01 10:07:01 |  Get-LocalUser                            | j.doe | 172.16.10.7 |
+| 2025-08-01 10:07:20 |  Invoke-WebRequest -Uri ... -OutFile ...  | j.doe | 172.16.10.7 |
