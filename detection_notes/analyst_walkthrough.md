@@ -1,8 +1,8 @@
-# 🧠 SOC Analyst Walkthrough — IR Sim 101
+# 🧠 SOC Analyst Walkthrough - IR Sim 101
 
 ## 🗓️ Scenario Summary
 
-The user `jacob.k@acmecorp.io` was tricked into submitting their Office 365 credentials via a phishing email. The attacker reused these valid credentials to log in to the corporate Office 365 environment and later used them again to access an internal portal (`intra.acmecorp.io`)—the link for which was found in old email threads. Through this access, they executed PowerShell commands to perform reconnaissance and potentially stage a payload delivery.
+The user `j.doe@acme.com` was tricked into submitting their Office 365 credentials via a phishing email. The attacker reused these valid credentials to log in to the corporate Office 365 environment and later used them again to access an internal portal (`intra.acmecorp.io`), the link for which was found in old email threads. Through this access, they executed PowerShell commands to perform reconnaissance and potentially stage a payload delivery.
 
 ---
 
@@ -10,8 +10,8 @@ The user `jacob.k@acmecorp.io` was tricked into submitting their Office 365 cred
 
 - Data Source: `o365_login_events.csv`
 - A successful login was detected from **Singapore**, a geo-location never previously seen for this user.
-- The login was from an unfamiliar browser and occurred at 2:19 AM IST.
-- Historical data showed this user typically logs in from Mumbai, India.
+- The login was from an unfamiliar browser and occurred at 10:03 AM IST.
+- Historical data showed this user typically logs in from India.
 
 ✅ **Alert Triggered**: `O365_Suspicious_Login_GeoMismatch`
 
