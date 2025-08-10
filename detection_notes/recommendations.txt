@@ -1,0 +1,32 @@
+======================
+Security Recommendations
+======================
+
+1. Immediate Actions:
+   - Block all malicious IPs and domains listed in IOC list at firewall and proxy level
+   - Isolate compromised hosts from the network
+   - Revoke exposed admin credentials and force password reset organization-wide
+
+2. Containment & Eradication:
+   - Remove malicious binaries (`winupdate.exe`, `syncservice.dll`) from all endpoints
+   - Clear malicious registry persistence entries
+   - Terminate suspicious RDP and SMB sessions
+   - Disable PsExec execution in the environment
+
+3. Network Hardening:
+   - Implement strict outbound traffic rules for non-standard ports
+   - Enable TLS certificate pinning for critical applications
+   - Deploy deep packet inspection (DPI) to detect encrypted C2 traffic
+   - Configure DNS filtering to block tunneling attempts
+
+4. Monitoring & Detection:
+   - Set up Splunk queries for detecting beaconing patterns with fixed intervals
+   - Monitor for unusual file transfer volumes during off-hours
+   - Enable logging for PowerShell, WMI, and PsExec activity
+
+5. Long-Term Recommendations:
+   - Conduct phishing awareness training focusing on malicious macros
+   - Enforce MFA for all privileged accounts
+   - Regularly rotate service account credentials
+   - Establish a threat hunting routine focused on Cobalt Strike and ransomware TTPs
+   - Subscribe to updated threat intel feeds for early IOC detection
