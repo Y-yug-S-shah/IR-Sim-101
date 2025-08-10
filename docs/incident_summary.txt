@@ -1,0 +1,48 @@
+Incident Summary – Day 4 (Root Cause Analysis & Lessons Learned)
+
+Incident Title: Unauthorized Remote Access to Internal Workstation
+Incident ID: SOC-2025-IR-001
+
+Date of Incident: 2025-08-05  
+Date of Report: 2025-08-08  
+Prepared by: Yug Shah
+
+Summary:
+On 5th August 2025, a security incident was detected involving unauthorized remote access to an internal workstation (hostname: HR-WS-22). Initial detection occurred via Splunk alerts triggered by abnormal RDP login activity from an external IP address. The attacker leveraged stolen credentials obtained from a phishing campaign targeting HR department employees.
+
+Root Cause:
+The root cause was traced to a phishing email sent to the HR department. One employee opened a malicious attachment, which executed a credential-stealing malware. The stolen credentials were later used to log into HR-WS-22 from an external IP. MFA was not enabled on the RDP service, making the compromise easier.
+
+Timeline:
+- 05-Aug-2025 10:14: Splunk alert triggered (Unusual RDP login)
+- 05-Aug-2025 10:15: Analyst review confirms suspicious activity
+- 05-Aug-2025 10:20: Incident escalated to Incident Response Team
+- 05-Aug-2025 10:25: RDP session terminated, workstation isolated
+- 05-Aug-2025 10:40: Memory dump and forensic image collected
+- 05-Aug-2025 12:00: IOC enrichment completed; external IP linked to known threat actor “APT-Cobra”
+- 06-Aug-2025 09:30: Malware sample analyzed – identified as credential stealer (variant of RedLine)
+- 07-Aug-2025 15:00: Root cause analysis completed – confirmed phishing campaign as source
+- 08-Aug-2025 09:00: Lessons learned session conducted
+
+Impact:
+- Compromised user account (HR department staff)
+- Potential exposure of sensitive HR documents (no confirmed exfiltration)
+- Temporary downtime for affected workstation
+
+Remediation Steps Taken:
+1. Isolated infected workstation from the network.
+2. Disabled compromised user account and reset all HR department credentials.
+3. Removed malware from the system and performed OS reinstallation.
+4. Implemented MFA on all RDP-enabled systems.
+5. Updated phishing awareness training for HR department.
+
+Lessons Learned:
+- MFA should be enforced on all remote access systems.
+- Regular phishing awareness training significantly reduces risk.
+- Splunk correlation searches should be tuned for more aggressive detection of unusual login patterns.
+- Phishing email reporting needs to be actively encouraged and rewarded.
+
+Follow-up Actions:
+- Conduct targeted phishing simulations for HR department (scheduled for September 2025).
+- Deploy EDR solution on all endpoints for better real-time detection.
+- Review and update Incident Response playbooks to include faster RDP compromise handling.
