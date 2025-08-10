@@ -1,0 +1,29 @@
+======================
+Network Analysis Summary
+======================
+
+1. Traffic Overview:
+   - Timeframe analyzed: 2025-08-05 08:00 IST – 2025-08-06 18:00 IST
+   - Notable increase in outbound HTTPS traffic to non-standard ports (TCP 4433, 8443)
+   - Multiple beaconing intervals of ~60 seconds to 185.234.217.42 over TCP 443
+
+2. C2 Beacon Patterns:
+   - Beaconing via HTTPS with custom User-Agent string: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) CustomUpdater/1.0"
+   - Payload size range: 450–550 bytes per beacon
+   - Encrypted POST requests with randomized URI paths: `/api/v1/checkin/<random_string>`
+
+3. Lateral Movement Indicators:
+   - SMB connections from compromised host to internal file server (10.0.5.12)
+   - RDP authentication attempts using stolen admin credentials to 10.0.8.21
+   - Evidence of PsExec usage: service creation events followed by immediate deletion
+
+4. Data Exfiltration Signs:
+   - Large outbound data transfer (~1.2GB) over HTTPS to drive-sync[.]org
+   - Exfiltrated data was segmented into 10MB chunks, zipped, and AES-encrypted
+   - Transfer initiated during non-business hours (03:17 IST – 03:42 IST)
+
+5. Protocol Anomalies:
+   - TLS certificates from malicious C2 domains were self-signed and reused across multiple IPs
+   - DNS tunneling attempts detected:
+       * Queries to random subdomains of api-update[.]net
+       * Query length exceeding normal thresholds (>100 bytes)
