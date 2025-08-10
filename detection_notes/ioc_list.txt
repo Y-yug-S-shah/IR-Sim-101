@@ -1,0 +1,30 @@
+======================
+Indicators of Compromise (IOCs)
+======================
+
+1. Malicious IP Addresses:
+   - 185.234.217.42 (C2 infrastructure, associated with Cobalt Strike beacon)
+   - 91.219.236.15 (Malware download host, linked to known ransomware distribution)
+   - 203.160.75.54 (Secondary C2, Tor exit node)
+   - 198.46.224.126 (Credential exfiltration endpoint)
+
+2. Malicious Domains:
+   - api-update[.]net (Fake Windows Update delivery domain)
+   - mssecure-storage[.]com (Credential harvesting landing page)
+   - drive-sync[.]org (Data exfiltration via HTTP POST requests)
+   - checkin-server[.]pro (Beacon registration endpoint)
+
+3. File Hashes:
+   - MD5: 9f2e6d1d7b54a92f4df4fa2b3b0f92f8
+   - SHA1: 5f3e5f2c13c58fd602b841e78c7c1871ff930a14
+   - SHA256: c4a128a57b2b821ae8f7f4e39d9c977c37df05a7f8b9e458f8a16a79d1f6f14b
+
+4. Malware Artifacts:
+   - `winupdate.exe` (Trojan dropper, masquerading as Windows Update)
+   - `syncservice.dll` (Injected malicious DLL)
+   - Registry persistence key: `HKCU\Software\Microsoft\Windows\CurrentVersion\Run\Updater`
+
+5. Email Phishing Artifacts:
+   - Sender: noreply@mssecure-storage[.]com
+   - Subject: "Security Update Required – Action Needed"
+   - Attachment: `Security_Update_2025.docm` (contains malicious macro)
