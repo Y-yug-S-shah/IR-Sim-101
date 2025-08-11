@@ -15,19 +15,26 @@ This document serves as the running **Incident Response (IR) log**, capturing in
 
 ---
 
-## 📅 Timeline of Events
+| Date & Time (IST)       | Event                                                                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **04 Aug 2025 – 09:15** | Attacker sends phishing email to targeted employee’s corporate mailbox (Office 365). Email contains malicious link to fake login page. |
+| **04 Aug 2025 – 09:27** | Victim clicks the link and enters credentials into attacker-controlled phishing site.                                                  |
+| **04 Aug 2025 – 09:29** | Attacker receives harvested Office 365 credentials via phishing backend.                                                               |
+| **04 Aug 2025 – 09:41** | Attacker logs into Office 365 web portal successfully from an IP located outside the usual geolocation for the account.                |
+| **04 Aug 2025 – 09:55** | While browsing the victim’s mailbox, attacker discovers an **internal portal link** in older internal communications.                  |
+| **04 Aug 2025 – 10:07** | Attacker attempts login to the internal portal using the same stolen Office 365 credentials — login is successful.                     |
+| **04 Aug 2025 – 10:15** | From the internal portal, attacker identifies a feature allowing authenticated users to trigger PowerShell-based automation scripts.   |
+| **04 Aug 2025 – 10:21** | Attacker executes malicious PowerShell commands to enumerate network shares and extract basic system information.                      |
+| **04 Aug 2025 – 10:27** | Attacker uploads a second-stage PowerShell script for credential harvesting and lateral movement preparation.                          |
+| **04 Aug 2025 – 10:39** | Unusual PowerShell activity triggers security monitoring alerts in SOC dashboard.                                                      |
+| **04 Aug 2025 – 10:45** | SOC analyst reviews alert, correlates with Office 365 login logs, and raises an incident ticket.                                       |
+| **04 Aug 2025 – 11:02** | Incident Response team initiates account suspension and network isolation for affected systems.                                        |
+| **04 Aug 2025 – 11:27** | Forensic acquisition begins for compromised endpoint and Office 365 mailbox logs.                                                      |
+| **04 Aug 2025 – 12:15** | IOC extraction and network traffic analysis confirm malicious activity originated from external attacker infrastructure.               |
+| **04 Aug 2025 – 13:00** | Containment completed, incident moved to eradication & recovery phase.                                                                 |
+| **04 Aug 2025 – 14:30** | Security policy updates and MFA enforcement rolled out to all users.                                                                   |
+| **04 Aug 2025 – 16:00** | Incident post-mortem conducted and documented in final report.                                                                         |
 
-| Date & Time (IST) | Event | Details |
-|-------------------|-------|---------|
-| 2025-08-07 09:30  | Phishing Email Delivered | User reports suspicious email to SOC. Email contains link to spoofed Office 365 login page. |
-| 2025-08-07 09:35  | Email Analysis Initiated | Email headers pulled from O365 security portal. Suspicious domain identified: `login-office365-secure[.]com`. |
-| 2025-08-07 09:45  | Phishing Link Investigation | SOC sandbox analysis confirms phishing page mimics Microsoft login and exfiltrates credentials to attacker's server. |
-| 2025-08-07 10:00  | Credential Compromise Confirmed | Review of O365 sign-in logs shows successful login from unusual IP in another country (Nigeria). |
-| 2025-08-07 10:10  | Attacker Mailbox Activity | Analysis shows attacker browsing victim’s mailbox. Multiple internal threads accessed, including one with internal portal URL. |
-| 2025-08-07 10:20  | Internal Portal Access | Logs confirm attacker logged into internal portal using same stolen O365 credentials. |
-| 2025-08-07 10:30  | IR Escalation | Incident escalated to Tier-3 and Incident Response Team. Decision made to reset victim credentials across all systems. |
-| 2025-08-07 11:00  | Containment Measures | O365 account locked, internal portal session terminated, and MFA enforced. |
-| 2025-08-07 12:00  | Forensic Data Preservation | All related logs, phishing email, and malicious artifacts preserved for further analysis. |
 
 ---
 
@@ -87,7 +94,7 @@ This document serves as the running **Incident Response (IR) log**, capturing in
 
 ---
 
-## 🛡 Containment & Mitigation Steps
+## Containment & Mitigation Steps
 1. Locked O365 account and forced global logout.
 2. Reset credentials in O365 and internal portal.
 3. Enforced MFA on all accounts.
