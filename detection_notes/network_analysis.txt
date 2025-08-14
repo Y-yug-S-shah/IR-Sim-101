@@ -3,7 +3,7 @@ Network Analysis Summary
 ======================
 
 1. Traffic Overview:
-   - Timeframe analyzed: 2025-08-05 08:00 IST – 2025-08-06 18:00 IST
+   - Timeframe analyzed: 2025-08-05 10:07 IST – 2025-08-06 11:30 IST
    - Notable increase in outbound HTTPS traffic to non-standard ports (TCP 4433, 8443)
    - Multiple beaconing intervals of ~60 seconds to 185.234.217.42 over TCP 443
 
